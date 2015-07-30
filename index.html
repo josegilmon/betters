@@ -22,13 +22,13 @@
 			}
 
 			div.expanded {
-				width: 450px;
-				height: 450px;
+				width: 600px;
+				height: 600px;
 			}
 
 			div.minimized {
-				width: 225px;
-				height: 225px;
+				width: 150px;
+				height: 150px;
 			}
 
 		</style>
@@ -46,6 +46,19 @@
 		<div></div>
 		<div></div>
 		<div></div>
+
+		<script type="text/javascript" src="public/js/jquery-2.1.4.js"></script>
+		<script type="text/javascript">
+
+			$().ready(function () {
+				$('div').on('click', function (e) {
+console.log('clicked');
+					$('div').removeClass('expanded').addClass('minimized');
+					$(this).removeClass('minimized').addClass('expanded');
+				});
+			});
+
+		</script>
 
 	</body>
 </html>

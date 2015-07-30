@@ -1,0 +1,40 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	font: 14px "Fira mono", "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+header, nav {
+	margin: auto;
+	width: 1024px;
+}
+nav ul {
+	list-style: none;
+}
+nav ul li {
+	padding: 10px;
+	display: inline;
+}
+
+main {
+	margin: auto;
+	padding: 32px;
+	width: 960px;
+	min-height: 960px;
+	background-color: lightgray;
+}
+
+main section {
+
+}
+
+footer {
+	clear: both;
+}
+
+a {
+	color: #00B7FF;
+}
