@@ -2,11 +2,15 @@ extends layout
 
 block content
 	h1 List
-	ul
-		li Elemento 1
-		li Elemento 2
-		li Elemento 3
-		li Elemento 4
-		li Elemento 5
+	ul#fixtures
 
-	a(href='html.html') Ver solo HTML
+	a(href='index.html') Ver solo HTML
+
+	script(type='text/javascript' src='js/Fixtures.js')
+
+	script(type='text/javascript').
+		$(document).ready(function listReady(e) {
+			var fixtures = Fixtures();
+			fixtures.load(1);
+			fixtures.print('#fixtures');
+		});
