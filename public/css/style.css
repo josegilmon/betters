@@ -4,25 +4,36 @@
 }
 
 body {
-	font: 14px "Fira mono", "Lucida Grande", Helvetica, Arial, sans-serif;
+	font: 14px "Lucida Grande", "Fira mono", Helvetica, Arial, sans-serif;
+}
+
+ul {
+	list-style: none;
 }
 
 header, nav {
 	margin: auto;
-	width: 1024px;
+	width: 100%;
+	max-width: 1024px;
 }
-nav ul {
-	list-style: none;
-}
+
 nav ul li {
 	padding: 10px;
+	display: inline;
+}
+
+ul.fixtures li {
+	padding: 5px 0;
+}
+
+ul.pagination li {
 	display: inline;
 }
 
 main {
 	margin: auto;
 	padding: 32px;
-	width: 960px;
+	max-width: 960px;
 	min-height: 960px;
 	background-color: lightgray;
 }

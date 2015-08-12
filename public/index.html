@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset='UTF-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'>
+
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
@@ -18,9 +21,9 @@
 	<main>
 		<section>
 			<h1>Lista</h1>
-			<ul id="fixtures"></ul>
+			<ul id="fixtures" class="fixtures"></ul>
 
-			<ul style="list-style: none;">
+			<ul class="pagination">
 				<li style="display: inline;"><a href="#" onclick="fixtures.load(1); return false;">1</a></li>
 				<li style="display: inline;"><a href="#" onclick="fixtures.load(2); return false;">2</a></li>
 				<li style="display: inline;"><a href="#" onclick="fixtures.load(3); return false;">3</a></li>
@@ -29,6 +32,10 @@
 			</ul>
 		</section>
 	</main>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+	<!--script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react-with-addons.js"></script-->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
 
 	<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
 	<script type="text/javascript" src="js/Fixtures.js"></script>
