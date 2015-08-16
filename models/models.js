@@ -1,4 +1,4 @@
-var path = require("path");
+var path = require('path');
 
 var url = process.env.DATABASE_URL.match(/(.*)\:\/\/(.*?)\:(.*)@(.*)\:(.*)\/(.*)/);
 var DB_name  = (url[6] || null);
@@ -10,7 +10,7 @@ var port     = (url[5] || null);
 var host     = (url[4] || null);
 var storage  = process.env.DATABASE_STORAGE;
 
-var Sequelize = require("sequelize");
+var Sequelize = require('sequelize');
 
 var sequelize = new Sequelize(DB_name, user, pwd,
     {
@@ -23,8 +23,8 @@ var sequelize = new Sequelize(DB_name, user, pwd,
     }
 );
 
-var Quiz = sequelize.import( path.join( __dirname, "quiz") );
-var Comment = sequelize.import( path.join( __dirname, "comment") );
+var Quiz = sequelize.import( path.join( __dirname, 'quiz') );
+var Comment = sequelize.import( path.join( __dirname, 'comment') );
 
 Comment.belongsTo(Quiz);
 Quiz.hasMany(Comment);
@@ -33,17 +33,17 @@ sequelize.sync().then(function () {
     Quiz.count().then(function (count) {
         if (count === 0) {
             Quiz.create({
-                pregunta: "¿Capital de Italia?",
-                respuesta: "Roma",
-                categoria: "Humanidades"
+                pregunta: '¿Capital de Italia?',
+                respuesta: 'Roma',
+                categoria: 'Humanidades'
             });
             Quiz.create({
-                pregunta: "¿Capital de Portugal?",
-                respuesta: "Lisboa",
-                categoria: "Humanidades"
+                pregunta: '¿Capital de Portugal?',
+                respuesta: 'Lisboa',
+                categoria: 'Humanidades'
             })
             .then(function () {
-                console.log("Base de datos inicializada");
+                console.log('Base de datos inicializada');
             })
         }
     });

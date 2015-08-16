@@ -43,11 +43,7 @@ main {
 	background-color: lightgray;
 }
 
-main section {
-
-}
-
-main div.fixtures .fixtureCard {
+main section .fixtureCard {
 	background-color: white;
 	border: 1px solid #666;
 	padding: 5px 10px;
@@ -55,7 +51,7 @@ main div.fixtures .fixtureCard {
 	text-align: center;
 }
 
-main div.fixtures .fixtureCard .fixtureDate {
+main section .fixtureCard .fixtureDate {
 	width: 100%;
 	text-align: center;
 	font-size: 0.8em;
