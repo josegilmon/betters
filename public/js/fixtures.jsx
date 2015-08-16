@@ -18,9 +18,9 @@ var FixtureCard = React.createClass({
 
 var FixtureList = React.createClass({
   render: function() {
-    var fixtureNodes = this.props.data.map(function (fixture) {
+    var fixtureNodes = this.props.data.map(function (fixture, i) {
       return (
-        <FixtureCard fixture={fixture}></FixtureCard>
+        <FixtureCard fixture={fixture} key={i} />
       );
     });
     return (
@@ -82,15 +82,17 @@ var FixtureBox = React.createClass({
   },
   loadFixtures: function (day) {
     $.ajax({
-        headers: { 'X-Auth-Token': '97a03c48247f456f8d1d9c8fd7de5ce6' },
-        url: 'http://api.football-data.org/alpha/soccerseasons/399/fixtures?matchday=' + (day || 1),
-        dataType: 'json',
-        type: 'GET'
-      })
-      .done(function(response) {
-        _this.fixtures = response.fixtures.slice();
-        _this.print('#fixtures', true);
-      });
+      headers: { 'X-Auth-Token': '97a03c48247f456f8d1d9c8fd7de5ce6' },
+      url: 'http://api.football-data.org/alpha/soccerseasons/399/fixtures?matchday=' + (day || 1),
+      dataType: 'json',
+      type: 'GET',
+      success: function(response) {
+        this.setState({ data: response.fixtures.slice() });
+      }.bind(this)
+    });
+  },
+  componentDidMount: function () {
+    this.loadFixtures(this.state.jornada);
   },
   changeJornada: function (day) {
     this.setState({jornada: day});
@@ -108,36 +110,5 @@ var FixtureBox = React.createClass({
 
 React.render(
   <FixtureBox />,
-  $('#container')[0]
+  document.getElementById('container')
 );
-/*
-var Fixtures = function Fixtures() {
-  return {
-    fixtures: [],
-
-    load: function load (day) {
-
-      var _this = this;
-
-      $.ajax({
-          headers: { 'X-Auth-Token': '97a03c48247f456f8d1d9c8fd7de5ce6' },
-          url: 'http://api.football-data.org/alpha/soccerseasons/399/fixtures?matchday=' + (day || 1),
-          dataType: 'json',
-          type: 'GET'
-        })
-        .done(function(response) {
-          _this.fixtures = response.fixtures.slice();
-          _this.print('#fixtures', true);
-        });
-    },
-
-    print: function print(container, bClear) {
-
-      React.render(
-        <FixtureList data={this.fixtures} />,
-        $(container)[0]
-      );
-    }
-  };
-};
-*/

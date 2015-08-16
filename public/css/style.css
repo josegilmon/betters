@@ -1,70 +1,67 @@
 * {
-	margin: 0px;
-	padding: 0px;
+  margin: 0px;
+  padding: 0px;
 }
 
 body {
-	font: 1em "Fira mono", Helvetica, Arial, sans-serif;
+  font: 1em "Fira mono", Helvetica, Arial, sans-serif;
 }
 
 ul {
-	list-style: none;
+  list-style: none;
 }
 
 header, nav {
-	margin: auto;
-	width: 100%;
-	max-width: 1024px;
+  margin: auto;
+  width: 100%;
+  max-width: 1024px;
 }
 
 nav ul li {
-	padding: 1em;
-	display: inline;
+	height: 32px;
+  padding: 1em;
+  display: inline;
 }
 nav ul li.selected {
-	color: white;
-	background-color: #333;
+  color: white;
+  background-color: #333;
 }
 
 ul.fixtures li {
-	padding: 5px 0;
+  padding: 5px 0;
 }
 
 ul.pagination li {
-	display: inline;
-	padding: 0 5px;
+  display: inline;
+  padding: 0 5px;
 }
 
 main {
-	margin: auto;
-	padding: 32px;
-	max-width: 960px;
-	min-height: 960px;
-	background-color: lightgray;
+  margin: auto;
+  padding: 32px;
+  max-width: 960px;
+  min-height: 960px;
+  background-color: lightgray;
 }
 
-main section {
-
+main section .fixtureCard {
+  background-color: white;
+  border: 1px solid #666;
+  padding: 5px 10px;
+  margin: 5px 0;
+  text-align: center;
 }
 
-main div.fixtures .fixtureCard {
-	background-color: white;
-	border: 1px solid #666;
-	padding: 5px 10px;
-	margin: 5px 0;
-	text-align: center;
-}
-
-main div.fixtures .fixtureCard .fixtureDate {
-	width: 100%;
-	text-align: center;
-	font-size: 0.8em;
+main section .fixtureCard .fixtureDate {
+  width: 100%;
+  text-align: center;
+  font-size: 0.8em;
 }
 
 footer {
-	clear: both;
+  clear: both;
 }
 
 a {
-	color: #00B7FF;
+  color: #00B7FF;
 }
