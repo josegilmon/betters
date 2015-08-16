@@ -32,6 +32,7 @@ ul.fixtures li {
 
 ul.pagination li {
 	display: inline;
+	padding: 0 5px;
 }
 
 main {

@@ -42,7 +42,7 @@ $(document).ready(function listReady(e) {
 
 	var menu = new menuManager();
 	menu.init(0);
-
+/*
 	var fixtures = Fixtures();
 
 	fixtures.load(1);
@@ -55,5 +55,5 @@ $(document).ready(function listReady(e) {
 			});
 		$('ul.pagination').prepend(elem);
 	}
-
+*/
 });
