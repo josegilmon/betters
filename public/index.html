@@ -1,45 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset='UTF-8'>
-	<meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'>
 
-	<title></title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+  <title>Betters</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-	<header>
-		<nav>
-			<ul>
-				<li>Inicio</li>
-				<li>Clasificación</li>
-				<li>Jornada</li>
-			</ul>
-		</nav>
-	</header>
+  <header>
+    <nav></nav>
+  </header>
 
-	<main>
-		<section>
-			<h1>Lista</h1>
-			<ul id="fixtures" class="fixtures"></ul>
+  <main id="container">
+    <section>
+      <h1>Jornada 1</h1>
+      <div id="fixtures" class="fixtures"></div>
 
-			<ul class="pagination">
-				<li style="display: inline;"><a href="#" onclick="fixtures.load(1); return false;">1</a></li>
-				<li style="display: inline;"><a href="#" onclick="fixtures.load(2); return false;">2</a></li>
-				<li style="display: inline;"><a href="#" onclick="fixtures.load(3); return false;">3</a></li>
-				<li style="display: inline;"><a href="#" onclick="fixtures.load(4); return false;">4</a></li>
-				<li style="display: inline;"><a href="#" onclick="fixtures.load(5); return false;">5</a></li>
-			</ul>
-		</section>
-	</main>
+      <ul class="pagination"></ul>
+    </section>
+  </main>
 
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
-	<!--script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react-with-addons.js"></script-->
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+  <!--script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react-with-addons.js"></script-->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
 
-	<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
-	<script type="text/javascript" src="js/Fixtures.js"></script>
-	<script type="text/javascript" src="js/betters.js"></script>
+  <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+	<script type="text/jsx" src="js/menu.jsx"></script>
+	<script type="text/jsx" src="js/fixtures.jsx"></script>
+  <script type="text/javascript" src="js/betters.js"></script>
 
 </body>
 </html>
