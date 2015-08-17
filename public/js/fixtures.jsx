@@ -96,6 +96,7 @@ var FixtureBox = React.createClass({
   },
   changeJornada: function (day) {
     this.setState({jornada: day});
+    this.loadFixtures(day);
   },
   render: function () {
     return (
