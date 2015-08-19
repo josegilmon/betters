@@ -17,13 +17,20 @@ header, nav {
 	max-width: 1024px;
 }
 
+nav ul {
+  height: 3em;
+  position: relative;
+}
 nav ul li {
-	padding: 1em;
-	display: inline;
+	padding: 1em 2em;
+  color: white;
+  background: #666;
+  cursor: pointer;
+  display: inline;
 }
 nav ul li.selected {
-	color: white;
-	background-color: #333;
+	color: black;
+	background-color: white;
 }
 
 ul.fixtures li {

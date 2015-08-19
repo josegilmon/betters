@@ -1,6 +1,9 @@
 {
   "name": "betters",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "description": "Betters, el juego para adivinar los resultados de liga",
+  "author": "Jose Antonio Gil",
+  "main": "gulpfile.js",
   "private": true,
   "scripts": {
     "start": "supervisor ./bin/www"
@@ -14,5 +17,11 @@
     "morgan": "~1.5.1",
     "pg": "^4.4.0",
     "serve-favicon": "~2.2.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.8.2",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-uglify": "^1.2.0"
   }
 }
