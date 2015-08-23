@@ -1,14 +1,25 @@
 
 var FixtureCard = React.createClass({
   render: function() {
+
+    var imgPath = 'img/teams/big/';
+    var imgExt = '.jpg';
+
     var date = new Date(this.props.fixture.date.replace(/[Z]/gi, ""));
-    console.log( date );
+    var homeTeam = teams[this.props.fixture.homeTeamName];
+    var awayTeam = teams[this.props.fixture.awayTeamName];
 
     return (
       <li className="fixtureCard">
-        <span>{ this.props.fixture.homeTeamName }</span>
+        <span>
+          <img src={ imgPath + homeTeam.code + imgExt } />
+          { this.props.fixture.homeTeamName }
+        </span>
         <span> - </span>
-        <span>{ this.props.fixture.awayTeamName }</span>
+        <span>
+          { this.props.fixture.awayTeamName }
+          <img src={ imgPath + awayTeam.code + imgExt } />
+        </span>
         <br/>
         <p className="fixtureDate">{ date.toLocaleString('latn') }</p>
       </li>
