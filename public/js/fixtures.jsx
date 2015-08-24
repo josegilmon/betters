@@ -10,19 +10,23 @@ var FixtureCard = React.createClass({
     var awayTeam = teams[this.props.fixture.awayTeamName];
 
     return (
-      <li className="fixtureCard">
-        <span>
-          <img src={ imgPath + homeTeam.code + imgExt } />
+      <div className="fixtureCard row">
+        <div className="col l1">
+          <img src={ imgPath + homeTeam.code + imgExt } className="circle responsive-img" />
+        </div>
+        <div className="col l5">
           { this.props.fixture.homeTeamName }
-        </span>
-        <span> - </span>
-        <span>
+        </div>
+        <div className="col l5 right-align">
           { this.props.fixture.awayTeamName }
-          <img src={ imgPath + awayTeam.code + imgExt } />
-        </span>
-        <br/>
-        <p className="fixtureDate">{ date.toLocaleString('latn') }</p>
-      </li>
+        </div>
+        <div className="col l1">
+            <img src={ imgPath + awayTeam.code + imgExt } className="circle responsive-img" />
+        </div>
+        <div className="col l12 center-align">
+          { date.toLocaleString('latn') }
+        </div>
+      </div>
     );
   }
 });
@@ -53,11 +57,10 @@ var FixturePagination = React.createClass({
     var maxJornadas = 8;
 
     // Añadimos la navegación a la primera página
-    pages.push( this.props.page == 1 ? (
-        <li>&lt;&lt;</li>
-      ) : (
-        <li onClick={this.selectPage} data-page="1">{}<a href="#">&lt;&lt;</a></li>
-      )
+    pages.push(
+      <li className={this.props.page === 1 ? "disabled" : "waves-effect" }>
+        <a href="#!"><i className="material-icons">chevron_left</i></a>
+      </li>
     );
     // Añadimos la navegación de las páginas 1 a n
     for (var i = 1; i <= maxJornadas; i++) {
@@ -69,12 +72,12 @@ var FixturePagination = React.createClass({
       );
     }
     // Añadimos la navegación a la última página
-    pages.push( this.props.page >= maxJornadas ? (
-        <li>&gt;&gt;</li>
-      ) : (
-        <li onClick={this.selectPage} data-page="{maxJornadas}"><a href="#">&gt;&gt;</a></li>
-      )
+    pages.push(
+      <li className={ this.props.page >= maxJornadas ? "disabled" : "waves-effect" }>
+        <a href="#!"><i className="material-icons">chevron_right</i></a>
+      </li>
     );
+    // <li onClick={this.selectPage} data-page="{maxJornadas}"><a href="#">&gt;&gt;</a></li>
 
     return (
       <ul className="pagination">
@@ -106,11 +109,13 @@ var FixtureBox = React.createClass({
   },
   render: function () {
     return (
-      <section>
-        <h1>Jornada {this.state.jornada}</h1>
-        <FixtureList data={this.state.data} />
-        <FixturePagination page={this.state.jornada} onPageSelected={this.changeJornada} />
-      </section>
+      <div className="col s12">
+        <section>
+          <h1>Jornada {this.state.jornada}</h1>
+          <FixtureList data={this.state.data} />
+          <FixturePagination page={this.state.jornada} onPageSelected={this.changeJornada} />
+        </section>
+      </div>
     );
   }
 });

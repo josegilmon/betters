@@ -7,7 +7,7 @@ var MenuItem = React.createClass({
     };
 
     return (
-      <li className="" onClick={navigate}>{this.props.data.title}</li>
+      <li className="active"><a href={navigate}>{this.props.data.title}</a></li>
     );
   }
 });
@@ -41,9 +41,12 @@ var MenuManager = React.createClass({
       );
     });
     return (
-      <ul>
-        {menuItems}
-      </ul>
+      <div className="navbar-fixed green darken-3">
+        <a href="#" className="brand-logo right">Logo</a>
+        <ul id="nav-mobile" className="left hide-on-med-and-down">
+          {menuItems}
+        </ul>
+      </div>
     );
   }
 });
