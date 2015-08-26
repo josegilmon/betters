@@ -1,3 +1,12 @@
+var If = React.createClass({
+  render: function() {
+    if (this.props.condition) {
+      return this.props.children;
+    } else {
+      return false;
+    }
+  }
+});
 
 var FixtureCard = React.createClass({
   render: function() {
@@ -11,20 +20,20 @@ var FixtureCard = React.createClass({
 
     return (
       <div className="fixtureCard row">
-        <div className="col l1">
-          <img src={ imgPath + homeTeam.code + imgExt } className="circle responsive-img" />
-        </div>
-        <div className="col l5">
-          { this.props.fixture.homeTeamName }
-        </div>
-        <div className="col l5 right-align">
-          { this.props.fixture.awayTeamName }
-        </div>
-        <div className="col l1">
-            <img src={ imgPath + awayTeam.code + imgExt } className="circle responsive-img" />
-        </div>
         <div className="col l12 center-align">
           { date.toLocaleString('latn') }
+        </div>
+        <div className="col l2">
+          <img src={ imgPath + homeTeam.code + imgExt } className="responsive-img" />
+        </div>
+        <div className="col l4">
+          { this.props.fixture.homeTeamName }
+        </div>
+        <div className="col l4 right-align">
+          { this.props.fixture.awayTeamName }
+        </div>
+        <div className="col l2">
+            <img src={ imgPath + awayTeam.code + imgExt } className="responsive-img" />
         </div>
       </div>
     );
@@ -33,15 +42,20 @@ var FixtureCard = React.createClass({
 
 var FixtureList = React.createClass({
   render: function() {
-    var fixtureNodes = this.props.data.map(function (fixture) {
+    var fixtureNodes = this.props.data.map(function(fixture) {
       return (
-        <FixtureCard fixture={fixture}></FixtureCard>
+        <div className="col s12 l6">
+          <div className="card green lighten-5">
+            <FixtureCard fixture={fixture}></FixtureCard>
+          </div>
+        </div>
       );
     });
+
     return (
-      <ul className="fixtureList">
+      <div className="row">
         {fixtureNodes}
-      </ul>
+      </div>
     );
   }
 });
@@ -58,8 +72,8 @@ var FixturePagination = React.createClass({
 
     // Añadimos la navegación a la primera página
     pages.push(
-      <li className={this.props.page === 1 ? "disabled" : "waves-effect" }>
-        <a href="#!"><i className="material-icons">chevron_left</i></a>
+      <li className={this.props.page === 1 ? "disabled" : "waves-effect" } onClick={this.selectPage} dataPage="1">
+        <a href="" ><i className="material-icons">chevron_left</i></a>
       </li>
     );
     // Añadimos la navegación de las páginas 1 a n
@@ -73,8 +87,8 @@ var FixturePagination = React.createClass({
     }
     // Añadimos la navegación a la última página
     pages.push(
-      <li className={ this.props.page >= maxJornadas ? "disabled" : "waves-effect" }>
-        <a href="#!"><i className="material-icons">chevron_right</i></a>
+      <li className={ this.props.page >= maxJornadas ? "disabled" : "waves-effect" } onClick={this.selectPage} data-page={maxJornadas}>
+        <a href=""><i className="material-icons">chevron_right</i></a>
       </li>
     );
     // <li onClick={this.selectPage} data-page="{maxJornadas}"><a href="#">&gt;&gt;</a></li>
@@ -109,7 +123,7 @@ var FixtureBox = React.createClass({
   },
   render: function () {
     return (
-      <div className="col s12">
+      <div className="col l12">
         <section>
           <h1>Jornada {this.state.jornada}</h1>
           <FixtureList data={this.state.data} />
