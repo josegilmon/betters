@@ -44,8 +44,8 @@ var FixtureList = React.createClass({
   render: function() {
     var fixtureNodes = this.props.data.map(function(fixture) {
       return (
-        <div className="col s12 l6">
-          <div className="card green lighten-5">
+        <div className="col s12 m6 l4">
+          <div className="card">
             <FixtureCard fixture={fixture}></FixtureCard>
           </div>
         </div>
