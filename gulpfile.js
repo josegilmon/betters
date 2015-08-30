@@ -1,25 +1,4 @@
 /*
-var gulp        = require('gulp');
-var browserSync = require('browser-sync').create();
-
-// create a task that ensures the `js` task is complete before
-// reloading browsers
-gulp.task('js-watch', browserSync.reload);
-
-// Static server
-gulp.task('default', function() {
-  browserSync.init({
-    server: {
-      baseDir: "./public/"
-    }
-  });
-  // add browserSync.reload to the tasks array to make
-  // all browsers reload after tasks are complete.
-  gulp.watch("public/*.*", ['js-watch']);
-});
-*/
-
-/*
 * Dependencias
 */
 var gulp = require('gulp');
@@ -31,6 +10,7 @@ var path = {
   APP: ['app.js', 'lib/*.js', 'models/*.js', 'routes/*.js'],
   JS: ['public/js/*.js', 'public/js/**/*.js'],
   JSX: ['public/js/*.jsx'],
+  CSS: ['public/css/*.css'],
   HTML: ['public/*.html'],
   ALL: ['public/js/*.js', 'public/js/**/*.js', 'public/js/*.jsx', 'public/*.html'],
   DEST_BUILD: 'public/js/build',
@@ -58,7 +38,7 @@ gulp.task('server', function () {
   gulp.watch(path.JSX, ['react', 'notify']);
   gulp.watch(path.JS, server.notify);
   //gulp.watch(['app/scripts/**/*.js'], ['jshint']);
-  //gulp.watch(['app/styles/**/*.scss'], ['styles:scss']);
+  gulp.watch(path.CSS, server.notify);
   //gulp.watch(['public/img/**/*'], server.notify);
   gulp.watch(path.APP, server.run);
 });

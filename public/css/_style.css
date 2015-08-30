@@ -1,0 +1,81 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	font: 1em "Fira mono", Helvetica, Arial, sans-serif;
+}
+
+ul {
+	list-style: none;
+}
+
+header, nav {
+	margin: auto;
+	width: 100%;
+	max-width: 1024px;
+	background-color: lightgray;
+}
+
+nav ul {
+  height: 3em;
+  position: relative;
+}
+nav ul li {
+	padding: 1em 2em;
+  color: white;
+  background: #666;
+  cursor: pointer;
+  display: inline;
+}
+nav ul li.selected {
+	color: black;
+	background-color: white;
+}
+
+ul.fixtures li {
+	padding: 5px 0;
+}
+
+ul.pagination li {
+	display: inline;
+	padding: 0 5px;
+}
+
+main {
+	margin: auto;
+	padding: 32px;
+	max-width: 960px;
+	min-height: 960px;
+	background-color: lightgray;
+}
+
+main section .fixtureCard {
+	background-color: white;
+	border: 1px solid #666;
+	padding: 5px 10px;
+	margin: 5px 0;
+	text-align: center;
+}
+main section .fixtureCard img {
+	max-height: 48px;
+}
+main section .fixtureCard .fixtureDate {
+	width: 100%;
+	text-align: center;
+	font-size: 0.8em;
+}
+
+footer {
+	clear: both;
+}
+
+a {
+	color: #00B7FF;
+}
+
+.match-card::before {
+	background-image: url(../img/teams/big/347.jpg);
+	filter: grayscale(1);
+}

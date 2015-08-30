@@ -1,76 +1,26 @@
-* {
-	margin: 0px;
-	padding: 0px;
+.fixture-card {
+	height: 125px;
 }
 
-body {
-	font: 1em "Fira mono", Helvetica, Arial, sans-serif;
+.match-card::before {
+	background: url(../img/teams/big/347.jpg) center!important;
+	-webkit-filter: grayscale(1) opacity(0.3)!important;
+	filter: grayscale(1) opacity(0.3)!important;
+}
+.match-card h6 {
+	font-size: 1.25em;
 }
 
-ul {
-	list-style: none;
+.fixture-score-grid {
+	margin-top: 15px;
 }
-
-header, nav {
-	margin: auto;
-	width: 100%;
-	max-width: 1024px;
-	background-color: lightgray;
-}
-
-nav ul {
-  height: 3em;
-  position: relative;
-}
-nav ul li {
-	padding: 1em 2em;
-  color: white;
-  background: #666;
-  cursor: pointer;
-  display: inline;
-}
-nav ul li.selected {
-	color: black;
-	background-color: white;
-}
-
-ul.fixtures li {
-	padding: 5px 0;
-}
-
-ul.pagination li {
-	display: inline;
-	padding: 0 5px;
-}
-
-main {
-	margin: auto;
-	padding: 32px;
-	max-width: 960px;
-	min-height: 960px;
-	background-color: lightgray;
-}
-
-main section .fixtureCard {
-	background-color: white;
-	border: 1px solid #666;
-	padding: 5px 10px;
-	margin: 5px 0;
+.fixture-score-grid span {
+	border: 1px solid black;
 	text-align: center;
+	padding: 0.25em 0.5em;
+	font-size: 0.9em;
+	cursor: pointer;
 }
-main section .fixtureCard img {
-	max-height: 48px;
-}
-main section .fixtureCard .fixtureDate {
-	width: 100%;
-	text-align: center;
-	font-size: 0.8em;
-}
-
-footer {
-	clear: both;
-}
-
-a {
-	color: #00B7FF;
+.fixture-score-grid span.selected {
+	background-color: lightgreen;
 }

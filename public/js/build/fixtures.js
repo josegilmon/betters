@@ -1,39 +1,77 @@
-var If = React.createClass({displayName: "If",
-  render: function() {
-    if (this.props.condition) {
-      return this.props.children;
-    } else {
-      return false;
+
+var FixtureScore = React.createClass({displayName: "FixtureScore",
+  handleClick: function (score) {
+    this.setState({data: score});
+  },
+  getInitialState: function () {
+    return {data: -1};
+  },
+  componentDidMount: function() {
+    var score = this.props.score;
+    if (score != undefined) {
+      this.setState({data: score > 3 ? 'M' : score});
     }
+  },
+  render: function () {
+
+    var _this = this;
+    var scores = ['0','1','2','M'];
+    var scoreTable = scores.map(function (score) {
+      var css = _this.state.data == score ? 'selected' : '';
+      var clickHandler = _this.handleClick.bind(_this, score);
+      return (
+        React.createElement("span", {className: css, onClick: clickHandler}, score)
+      );
+    });
+
+    return (
+      React.createElement("span", {className: "fixture-score-grid " + this.props.side}, 
+        scoreTable
+      )
+    );
   }
 });
 
 var FixtureCard = React.createClass({displayName: "FixtureCard",
+  handleHomeScore: function (score) {
+    this.props.fixture.result.goalsHomeTeam = score;
+  },
+  handleAwayScore: function (score) {
+    this.props.fixture.result.goalsAwayTeam = score;
+  },
   render: function() {
 
-    var imgPath = 'img/teams/big/';
     var imgExt = '.jpg';
+    var imgPath = 'img/teams/big/';
+    var dateOptions = { weekday: 'long', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' };
 
     var date = new Date(this.props.fixture.date.replace(/[Z]/gi, ""));
     var homeTeam = teams[this.props.fixture.homeTeamName];
     var awayTeam = teams[this.props.fixture.awayTeamName];
+    var score = this.props.fixture.result;
 
     return (
-      React.createElement("div", {className: "fixtureCard row"}, 
-        React.createElement("div", {className: "col l12 center-align"}, 
-           date.toLocaleString('latn') 
-        ), 
-        React.createElement("div", {className: "col l2"}, 
-          React.createElement("img", {src:  imgPath + homeTeam.code + imgExt, className: "responsive-img"})
-        ), 
-        React.createElement("div", {className: "col l4"}, 
-           this.props.fixture.homeTeamName
-        ), 
-        React.createElement("div", {className: "col l4 right-align"}, 
-           this.props.fixture.awayTeamName
-        ), 
-        React.createElement("div", {className: "col l2"}, 
-            React.createElement("img", {src:  imgPath + awayTeam.code + imgExt, className: "responsive-img"})
+      React.createElement("div", {className: "card"}, 
+        React.createElement("div", {className: "card-content fixture-card row"}, 
+          React.createElement("p", {className: "card-title"}, 
+            React.createElement("h6", {className: "black-text center-align"},  date.toLocaleString('es-ES', dateOptions) )
+          ), 
+          React.createElement("div", null, 
+            React.createElement("div", {className: "match-card col s6"}, 
+              React.createElement("h6", null,  homeTeam.shortName), 
+              React.createElement("div", {className: "row"}, 
+                React.createElement("img", {src:  imgPath + homeTeam.code + imgExt, className: "responsive-img col s4"}), 
+                React.createElement(FixtureScore, {className: "col s2", side: "right", score: score.goalsHomeTeam})
+              )
+            ), 
+            React.createElement("div", {className: "match-card col s6 right-align"}, 
+              React.createElement("h6", null,  awayTeam.shortName), 
+              React.createElement("div", {className: "row"}, 
+                React.createElement(FixtureScore, {className: "col s2", side: "left", score: score.goalsAwayTeam}), 
+                React.createElement("img", {src:  imgPath + awayTeam.code + imgExt, className: "responsive-img col s4 right"})
+              )
+            )
+          )
         )
       )
     );
@@ -44,10 +82,8 @@ var FixtureList = React.createClass({displayName: "FixtureList",
   render: function() {
     var fixtureNodes = this.props.data.map(function(fixture) {
       return (
-        React.createElement("div", {className: "col s12 m6 l4"}, 
-          React.createElement("div", {className: "card"}, 
-            React.createElement(FixtureCard, {fixture: fixture})
-          )
+        React.createElement("div", {className: "col m12 l6"}, 
+          React.createElement(FixtureCard, {fixture: fixture})
         )
       );
     });
@@ -125,7 +161,7 @@ var FixtureBox = React.createClass({displayName: "FixtureBox",
     return (
       React.createElement("div", {className: "col l12"}, 
         React.createElement("section", null, 
-          React.createElement("h1", null, "Jornada ", this.state.jornada), 
+          React.createElement("h2", null, "Jornada ", this.state.jornada), 
           React.createElement(FixtureList, {data: this.state.data}), 
           React.createElement(FixturePagination, {page: this.state.jornada, onPageSelected: this.changeJornada})
         )
